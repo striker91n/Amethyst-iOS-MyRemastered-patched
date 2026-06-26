@@ -783,7 +783,7 @@ static GameSurfaceView* pojavWindow;
         [ControllerInput initKeycodeTable];
         [ControllerInput registerControllerCallbacks:controller];
         self.mousePointerView.hidden = isGrabbing;
-        virtualMouseEnabled = YES;
+        virtualMouseEnabled = getPrefBool(@"control.virtmouse_enable");
         if (getPrefBool(@"control.hardware_hide")) { self.ctrlView.hidden = YES; }
     }];
     self.controllerDisconnectCallback = [[NSNotificationCenter defaultCenter] addObserverForName:GCControllerDidDisconnectNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
