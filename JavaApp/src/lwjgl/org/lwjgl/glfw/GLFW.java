@@ -1176,7 +1176,6 @@ public class GLFW
             return true;
         }else return false;
     }
-        System.out.println("[GLFW-DEBUG] glfwGetJoystickName(" + jid + ") called");
     public static String glfwGetJoystickName(int jid) {
         if(jid == 0) {
             return "AIC event bus controller";
@@ -1205,6 +1204,7 @@ public class GLFW
             System.out.println("[GLFW-DEBUG] glfwGetJoystickHats: hat0=" + buttonData.get(0));
             return buttonData;
         }else return null;
+    }
     public static boolean glfwJoystickIsGamepad(int jid) {
         if(jid == 0) return true;
         else return false;
