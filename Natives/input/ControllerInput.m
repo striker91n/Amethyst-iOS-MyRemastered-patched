@@ -91,14 +91,14 @@ static GCController *currentController;
 
 + (void)registerControllerCallbacks:(GCController *)controller {
     currentController = controller;
-    // Disabled — Controllable handles input directly
+    // Disabled - Controllable handles input directly
 }
 
 /**
  * Send the new mouse position, computing the delta
  */
 + (void)tick {
-    // Disabled — Controllable handles input directly
+    // Disabled - Controllable handles input directly
 }
 
 + (void)unregisterControllerCallbacks:(GCController *)controller {
