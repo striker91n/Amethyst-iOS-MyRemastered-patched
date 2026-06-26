@@ -89,7 +89,7 @@ BOOL leftShiftHeld;
 }
 
 + (void)registerControllerCallbacks:(GCController *)controller {
-    NSLog(@"[GLFW-DEBUG] Controller connected: %@", controller.vendorName ?: @"unknown");
+    NSLog(@"[GLFW-DEBUG] Controller connected: %@", (controller.vendorName ? controller.vendorName : @"unknown"));
     GCExtendedGamepad *gamepad = controller.extendedGamepad;
 
     gamepad.leftShoulder.pressedChangedHandler = ^(GCControllerButtonInput *button, float value, BOOL pressed) {
