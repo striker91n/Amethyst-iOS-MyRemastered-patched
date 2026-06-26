@@ -1178,20 +1178,20 @@ public class GLFW
     public static String glfwGetJoystickName(int jid) {
         if(jid == 0) {
             return "AIC event bus controller";
-        }else return null;
+        }else return buttonData;
     }
     public static FloatBuffer glfwGetJoystickAxes(int jid) {
         if(jid == 0) {
             return joystickData;
-        }else return null;
+        }else return buttonData;
     }
     public static ByteBuffer glfwGetJoystickButtons(int jid) {
         if(jid == 0) {
             return buttonData;
-        }else return null;
+        }else return buttonData;
     }
-    public static ByteBuffer glfwGetjoystickHats(int jid) {
-        return null;
+    public static ByteBuffer glfwGetJoystickHats(int jid) {
+        return buttonData;
     }
     public static boolean glfwJoystickIsGamepad(int jid) {
         if(jid == 0) return true;
@@ -1199,7 +1199,7 @@ public class GLFW
     }
     public static String glfwGetJoystickGUID(int jid) {
         if(jid == 0) return "aio0";
-        else return null;
+        else return buttonData;
     }
     public static long glfwGetJoystickUserPointer(int jid) {
         return 0;
