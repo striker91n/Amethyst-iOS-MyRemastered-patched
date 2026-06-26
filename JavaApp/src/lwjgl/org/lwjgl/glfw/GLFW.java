@@ -1171,10 +1171,12 @@ public class GLFW
     }
 
     public static boolean glfwJoystickPresent(int jid) {
+        System.out.println("[GLFW-DEBUG] glfwJoystickPresent(" + jid + ") = " + (jid == 0));
         if(jid == 0) {
             return true;
         }else return false;
     }
+        System.out.println("[GLFW-DEBUG] glfwGetJoystickName(" + jid + ") called");
     public static String glfwGetJoystickName(int jid) {
         if(jid == 0) {
             return "AIC event bus controller";
@@ -1182,17 +1184,27 @@ public class GLFW
     }
     public static FloatBuffer glfwGetJoystickAxes(int jid) {
         if(jid == 0) {
+            System.out.println("[GLFW-DEBUG] glfwGetJoystickAxes(" + jid + ") calling native");
+            nglfwGetJoystickState(0, joystickDataRaw, 16, null, 0, null, 0);
+            System.out.println("[GLFW-DEBUG] glfwGetJoystickAxes: axis0=" + joystickData.get(0) + " axis1=" + joystickData.get(1) + " axis2=" + joystickData.get(2) + " axis3=" + joystickData.get(3));
             return joystickData;
         }else return null;
     }
     public static ByteBuffer glfwGetJoystickButtons(int jid) {
         if(jid == 0) {
+            System.out.println("[GLFW-DEBUG] glfwGetJoystickButtons(" + jid + ") calling native");
+            nglfwGetJoystickState(0, null, 0, buttonData, 24, null, 0);
+            System.out.println("[GLFW-DEBUG] glfwGetJoystickButtons: btn0=" + buttonData.get(0) + " btn1=" + buttonData.get(1) + " btn4=" + buttonData.get(4));
             return buttonData;
         }else return null;
     }
     public static ByteBuffer glfwGetJoystickHats(int jid) {
-        return buttonData;
-    }
+        if(jid == 0) {
+            System.out.println("[GLFW-DEBUG] glfwGetJoystickHats(" + jid + ") calling native");
+            nglfwGetJoystickState(0, null, 0, null, 0, buttonData, 6);
+            System.out.println("[GLFW-DEBUG] glfwGetJoystickHats: hat0=" + buttonData.get(0));
+            return buttonData;
+        }else return null;
     public static boolean glfwJoystickIsGamepad(int jid) {
         if(jid == 0) return true;
         else return false;
