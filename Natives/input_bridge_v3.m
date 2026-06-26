@@ -295,6 +295,7 @@ void pojavRewindEvents() {
 JNIEXPORT void JNICALL
 Java_org_lwjgl_glfw_GLFW_nglfwGetCursorPos(JNIEnv *env, jclass clazz, jlong window, jobject xpos,
                                           jobject ypos) {
+    NSLog(@"[GLFW-DEBUG] nglfwGetJoystickState(jid=%d)", jid);
     *(double*)(*env)->GetDirectBufferAddress(env, xpos) = cursorX;
     *(double*)(*env)->GetDirectBufferAddress(env, ypos) = cursorY;
 }
@@ -302,6 +303,7 @@ Java_org_lwjgl_glfw_GLFW_nglfwGetCursorPos(JNIEnv *env, jclass clazz, jlong wind
 JNIEXPORT void JNICALL
 Java_org_lwjgl_glfw_GLFW_nglfwGetCursorPosA(JNIEnv *env, jclass clazz, jlong window,
                                             jdoubleArray xpos, jdoubleArray ypos) {
+    NSLog(@"[GLFW-DEBUG] nglfwGetJoystickState(jid=%d)", jid);
     (*env)->SetDoubleArrayRegion(env, xpos, 0,1, &cursorX);
     (*env)->SetDoubleArrayRegion(env, ypos, 0,1, &cursorY);
 }
@@ -309,6 +311,7 @@ Java_org_lwjgl_glfw_GLFW_nglfwGetCursorPosA(JNIEnv *env, jclass clazz, jlong win
 JNIEXPORT void JNICALL
 Java_org_lwjgl_glfw_GLFW_glfwSetCursorPos(JNIEnv *env, jclass clazz, jlong window, jdouble xpos,
                                           jdouble ypos) {
+    NSLog(@"[GLFW-DEBUG] nglfwGetJoystickState(jid=%d)", jid);
     cLastX = cursorX = xpos;
     cLastY = cursorY = ypos;
 }
