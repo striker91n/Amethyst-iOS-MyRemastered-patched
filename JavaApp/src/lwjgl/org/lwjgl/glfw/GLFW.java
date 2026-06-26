@@ -30,8 +30,9 @@ import sun.misc.Unsafe;
 
 public class GLFW
 {
-    static FloatBuffer joystickData = FloatBuffer.allocate(16);
-    static ByteBuffer buttonData = ByteBuffer.allocate(24);
+    static ByteBuffer joystickDataRaw = ByteBuffer.allocateDirect(16);
+    static FloatBuffer joystickData = joystickDataRaw.order(ByteOrder.nativeOrder()).asFloatBuffer();
+    static ByteBuffer buttonData = ByteBuffer.allocateDirect(24);
     /** The major version number of the GLFW library. This is incremented when the API is changed in non-compatible ways. */
     public static final int GLFW_VERSION_MAJOR = 3;
 
@@ -1131,6 +1132,8 @@ public class GLFW
 
     public static native void nglfwGetCursorPos(@NativeType("GLFWwindow *") long window, @Nullable @NativeType("double *") DoubleBuffer xpos, @Nullable @NativeType("double *") DoubleBuffer ypos);
     public static native void nglfwGetCursorPosA(@NativeType("GLFWwindow *") long window, @Nullable @NativeType("double *") double[] xpos, @Nullable @NativeType("double *") double[] ypos);
+
+    public static native void nglfwGetJoystickState(int jid, @Nullable ByteBuffer axes, int axisCount, @Nullable ByteBuffer buttons, int buttonCount, @Nullable ByteBuffer hats, int hatCount);
 
     public static native void glfwSetCursorPos(@NativeType("GLFWwindow *") long window, double xpos, double ypos); /*{
         mGLFWCursorX = mGLFWCursorLastX = xpos;
